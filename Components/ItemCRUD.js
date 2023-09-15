@@ -8,7 +8,7 @@ function ItemCRUD() {
   const [editingItem, setEditingItem] = useState(null);
 
   const [data, setData] = useState([]);
-
+  const [counter, setCounter] = useState(0);
   //1.A state variable is changed by its setter only.
   //2.when a state variable is changed the component is re-rendered i.e the return block  () executes again
   //3. useEffect explaind below.
