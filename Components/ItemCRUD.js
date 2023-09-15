@@ -9,6 +9,11 @@ function ItemCRUD() {
 
   const [data, setData] = useState([]);
 
+  //1.A state variable is changed by its setter only.
+  //2.when a state variable is changed the component is re-rendered i.e the return block  () executes again
+  //3. useEffect explaind below.
+
+  //It gets executed only once after mount is complete
   useEffect(() => {
     // Replace 'your-api-endpoint' with the actual API endpoint you want to fetch data from
     axios
@@ -21,7 +26,20 @@ function ItemCRUD() {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
+    //setCounter(counter+1)
+    //console.log("first useEffect called");
   }, []);
+
+  //It gets executed after mount. and also when the counter variable is updated.
+  useEffect(() => {
+    console.log("second useEffect called");
+    //setCounter(counter + 1);
+  }, [counter, data]);
+
+  //It gets executed after mount. and also when the any state variable is updated.
+  // useEffect(() => {
+  //   console.log("third useEffect");
+  // });
 
   //   useEffect(() => {
   //     // Fetch items from your API or a local data source
